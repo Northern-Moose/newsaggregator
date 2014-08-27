@@ -29,7 +29,8 @@ News aggregator that integrates with Facebook and Tumblr.
 - Redis 2.6.x
 - Postgresql 9.1.x
 - Angular 1.2.x
-- 
+- Passport 0.2x
+- Jasmine
 
 ## Development
 

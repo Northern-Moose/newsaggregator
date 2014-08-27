@@ -4,9 +4,10 @@ News aggregator that integrates with Facebook and Tumblr.
 
 ## Team
 
-  - __Product Owner__: teamMember
-  - __Scrum Master__: teamMember
-  - __Development Team Members__: teamMember, teamMember
+  - __Product Owner__: Sam Push
+  - __Scrum Master__: Sean Chen
+  - __Chief Backend Developer__: Etienne Tripier
+  - __Chief Frontend Devloper__: Matt Kim
 
 ## Table of Contents
 
@@ -27,8 +28,8 @@ News aggregator that integrates with Facebook and Tumblr.
 - Node 0.10.x
 - Redis 2.6.x
 - Postgresql 9.1.x
-- etc
-- etc
+- Angular 1.2.x
+- 
 
 ## Development
 
