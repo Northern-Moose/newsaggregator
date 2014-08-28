@@ -6,7 +6,7 @@ var apiToUrl = {
   rss: ''
 }
 
-angular.module('server', [
+angular.module('dbApp', [
 ])
 
 .service('getApi', function($http, $q) {
