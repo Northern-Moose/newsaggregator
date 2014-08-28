@@ -9,7 +9,7 @@ var apiToUrl = {
 angular.module('server', [
 ])
 
-.service('getApi', function($http) {
+.service('getApi', function($http, $q) {
 
   this.fetchFromApi = function (api) {
     var request = $http({
@@ -21,7 +21,7 @@ angular.module('server', [
   };
 
   this.sendMessage = function() {
-    return request.then(function(err, data) {
+    return $q(request).then(function(err, data) {
       if (err) {
         throw new Error(err);
         console.log(err);
