@@ -1,6 +1,6 @@
 Tools we'll be using:
 1. Angular
-2. SQL with BookShelf
+2. SQLite3 with BookShelf
 3. Node/EXPRESS
 4. Passport
 5. Jasmine for TDD
@@ -25,4 +25,4 @@ Software Architecture Description
    table and standardizes it all.
 4. Our Angular frontend app then makes POST requests to the hub table to populate a user's 
    stories. 
-5. User login outsourced to Facebook/Google. 
+5. User login outsourced to Facebook/Google. Users are tracked in a separate SQL table.

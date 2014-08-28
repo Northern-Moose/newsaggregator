@@ -26,11 +26,10 @@ News aggregator that integrates with Facebook and Tumblr.
 ## Requirements
 
 - Node 0.10.x
-- Redis 2.6.x
-- Postgresql 9.1.x
+- Sqlite3 2.2.x
 - Angular 1.2.x
 - Passport 0.2x
-- Jasmine
+- Jasmine 2.0.x
 
 ## Development
 
