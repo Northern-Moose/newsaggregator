@@ -1,5 +1,5 @@
 angular.module('posts.directive', [])
-	.directive('viewPost', function() {
+	.directive('postContent', function() {
 		return {
 			restrict: 'E',
 			scope: {
