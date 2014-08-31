@@ -5,7 +5,7 @@ angular.module('app.services', [])
 	.factory('GetPosts', function ($http) {
 		var getPosts = function(api) {
 			return $http({
-				method: 'GET'
+				method: 'GET',
 				url: api
 			})
 		}
