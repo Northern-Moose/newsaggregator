@@ -3,7 +3,7 @@ angular.module('posts', [
   'services'
   ])
 	.controller('PostsController', function($scope, $http) {
-    $http.get('http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=10&q=http://kiafathi.azurewebsites.net/rss/')
+    $http.jsonp('http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=10&q=http://kiafathi.azurewebsites.net/rss/')
       .success(function(res) {
         console.log(res);
       });
@@ -13,13 +13,18 @@ angular.module('posts', [
       console.log('clicked');
     };
 
-    $scope.getPosts = function() {
+    var getPosts = function() {
       GetPosts.gotten().success(function(posts) {
         angular.forEach(posts.data.children, function(value, key) {
-          console.log("value",value);
-        })
-        console.log("success", posts);
-        // $scope.data.posts = posts;
+          console.log("value",value.data);
+          // render the directive
+          $scope.post = value.data;
+        });
       });
     };
-  })
+
+    getPosts();
+  });
+
+  // angular.bootstrap(document, ['posts'])
+

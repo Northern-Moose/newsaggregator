@@ -1,21 +1,23 @@
 <html>
   <head>
     <title>Pers</title>
-    <script type="text/javascript" src="../node_modules/angular/lib/angular.min.js"></script>
+    <script type="text/javascript" src="../node_modules/angular/lib/angular.js"></script>
+    <script type="text/javascript" src="../node_modules/angular-route/angular-route.min.js"></script>
     <script type="text/javascript" src="../node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script type="text/javascript" src="./posts/posts.dir.js"></script>
     <script type="text/javascript" src="./posts/posts.controller.js"></script>
     <script type="text/javascript" src="./services.js"></script>
-    <!-- <script type="text/javascript" src="./app.js"></script> -->
+    <script type="text/javascript" src="./app.js"></script>
   </head>
   <body>
     <h1>Pers</h1>
     <div>
       Posts
-      <div ng-app="services">
-        <button ng-controller="clicker" ng-click="getPosts()">Get Posts</button>
+      <div ng-app="app">
+      <div ui-view></div>
+      <!-- {{posts}} -->
+        <button ng-controller="clicker">Get Posts</button>
       </div>
     </div>
-    <!-- <div ui-app="services" ui-model="app.services" ui-controller="PostsController"></div> -->
   </body>
 </html>
