@@ -1,4 +1,8 @@
+<div>
+	Search: <input ng-model="query">
+</div>
+
 <ul class="allPosts">
-	<post-content post="post" ng-repeat="post in data.posts | orderBy:'createdAt'">
+	<post-content post="post" ng-repeat="post in data.posts | filter:query | orderBy:'createdAt'">
 	</post-content>
 </ul>

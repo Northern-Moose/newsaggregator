@@ -22,7 +22,7 @@ db.knex.schema.hasTable('aggregatedContent').then(function(exists) {
   if (!exists) {
     db.knex.schema.createTable('aggregatedContent', function(content) {
       content.increments('id').primary();
-      content.integer('source');   // foreign key to our list of api sources, reddit, news, etc. to be used for filtering user preferences
+      content.integer('source'); // Foreign key to our list of APIs (Reddit, RSS, etc.)
       content.string('title', 255);
       content.string('url', 255);
       content.string('content', 1000);
@@ -41,8 +41,8 @@ db.knex.schema.hasTable('redditContent').then(function(exists) {
     db.knex.schema.createTable('redditContent', function(content) {
       content.increments('id').primary();
       content.string('title', 255);
-      content.string('url', 255);   // reddit permalink
-      content.string('content', 255); // template: 'Ups: 81 | Downs: 10'
+      content.string('url', 255); // Reddit permalink
+      content.string('content', 255); // Template: 'Ups: 81 | Downs: 10'
       // Standardize as date
       content.string('createdAt', 255);
     }).then(function (table) {

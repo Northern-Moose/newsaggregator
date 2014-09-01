@@ -1,6 +1,6 @@
 var db = require('./schema.js');
 
-var norModel = db.Model.extend({
+var nprModel = db.Model.extend({
   tableName: 'nprContent',
   hasTimestamps: false
-})
+});
