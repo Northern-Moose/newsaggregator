@@ -1,17 +1,37 @@
-angular.module('served', [
+angular.module('app', [
   'services',
   'posts',
-	'ui.route'
+  'ngRoute',
+  'ui.router'
 ])
 
-.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
-  $urlRouterProvider.otherwise('/');
+.config(['$stateProvider', function($stateProvider) {
+  console.log("hi");
+  // $statePr
+}]);
 
-  $stateProvider
-    .state('home', {
-      url: '/',
-      templateUrl: 'posts/posts.html',
-      controller: 'PostsController'
-    })
-  console.log($stateProvider);
-})
+// .config(['$stateProvider', function($stateProvider) {
+//   $urlRouterProvider.otherwise("");
+//   $stateProvider
+//     .state('home', {
+//       url:'',
+//       views: {
+//         templateUrl: 'posts/posts.html',
+//         controller: 'posts'
+//       }
+//     });
+//   $stateProvider.state(home);
+// }]);
+
+
+// .config(function($stateProvider) {
+//   $urlRouterProvider.otherwise('/');
+
+//   $stateProvider
+//     .state('home', {
+//       url: '/',
+//       templateUrl: 'posts/posts.html',
+//       controller: 'PostsController'
+//     })
+//   console.log($stateProvider);
+// })

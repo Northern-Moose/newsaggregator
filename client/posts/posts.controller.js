@@ -13,15 +13,17 @@ angular.module('posts', [
       console.log('clicked');
     };
 
-    $scope.getPosts = function() {
+    var getPosts = function() {
       GetPosts.gotten().success(function(posts) {
         angular.forEach(posts.data.children, function(value, key) {
           console.log("value",value.data);
           // render the directive
           $scope.post = value.data;
-        })
+        });
       });
     };
+
+    getPosts();
   });
 
   // angular.bootstrap(document, ['posts'])

@@ -8,11 +8,17 @@ angular.module('services', [
 				method: 'GET',
 				// url: 'http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=10&q=http://kiafathi.azurewebsites.net/rss/'
 				url: 'http://www.reddit.com/.json'
-			})
+			});
 		};
 		return {
 			gotten: gotten
 		};
 	});
+
+	// .config(function($stateProvider, $urlRouterProvider, $httpProvider) {
+	// 	$urlRouterProvider.otherwise('/home');
+
+
+	// });
 
 	// angular.bootstrap(document, ['services'])
