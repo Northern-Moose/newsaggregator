@@ -27,5 +27,14 @@
     "angular": "~1.2.21",
     "angular-ui-router": "~0.2.10",
     "sqlite3": "~2.2.7"
+  },
+  "devDependencies": {
+    "karma": "^0.12.23",
+    "karma-chrome-launcher": "^0.1.4",
+    "karma-jasmine": "^0.1.5",
+    "karma-mocha": "^0.1.9",
+    "karma-sinon": "^1.0.3",
+    "mocha": "^1.21.4",
+    "sinon": "^1.10.3"
   }
 }
