@@ -13,19 +13,6 @@ angular.module('services', [
 		return {
 			gotten: gotten
 		};
-	})
+	});
 
-	/* in Links.module */
-	// .controller('PostsController', function($scope, Posts) {
-	// 	$scope.showReddit = function(url) {
-	// 		Posts.getPosts().then(function(res) {
-	// 			$scope.data = res;
-	// 		})
-	// 		.catch(function(error) {
-	// 			console.log(error);
-	// 			// throw err
-	// 		})
-	// 	};
-
-	// 	$scope.showPosts
-	// })
+	// angular.bootstrap(document, ['services'])

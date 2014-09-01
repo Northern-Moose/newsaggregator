@@ -1,6 +1,6 @@
-angular.module('app', [
-  'app.services',
-  'app.posts',
+angular.module('served', [
+  'services',
+  'posts',
 	'ui.route'
 ])
 
