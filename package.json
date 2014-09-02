@@ -1,0 +1,31 @@
+{
+  "name": "newsaggregator",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Northern-Moose/newsaggregator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Northern-Moose/newsaggregator/issues"
+  },
+  "homepage": "https://github.com/Northern-Moose/newsaggregator",
+  "dependencies": {
+    "bookshelf": "~0.7.7",
+    "passport": "~0.2.0",
+    "express": "~4.8.5",
+    "jasmine": "~2.0.1",
+    "angular": "~1.2.21",
+    "angular-ui-router": "~0.2.10",
+    "sqlite3": "~2.2.7"
+  }
+}
