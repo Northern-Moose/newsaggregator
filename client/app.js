@@ -1,7 +1,19 @@
 angular.module('app', [
-	'ui.router',
-	'app.services'
-	// links
-	// iframe
-	])
+  'services',
+  'posts',
+  'ngRoute',
+  'ui.router'
+])
 
+.config(['$stateProvider', function($stateProvider) {
+  $stateProvider
+    .state('home', {
+      url: '/',
+      templateUrl: 'posts/posts.html',
+      controller: 'PostsController'
+    });
+}])
+
+.run(['$state', function($state) {
+  $state.transitionTo('home');
+}]);
