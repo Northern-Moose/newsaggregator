@@ -5,6 +5,6 @@ angular.module('posts.directive', [])
 			scope: {
 				post: '='
 			},
-			templateUrl: 'posts.tpl.html'
-		}
+			templateUrl: './posts/posts.tpl.html'
+		};
 	});

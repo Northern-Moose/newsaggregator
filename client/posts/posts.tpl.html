@@ -1,6 +1,7 @@
 <li class="post">
+  <img src="./assets/reddit.png" class="icon" style="width:60px; height:60px">
 	<div class="title">{{ post.title }}</div>
-	<div class="created">{{ post.createdAt }}</div>
-	<a href="{{ post.url }}">Post Permalink</a>
+	<div class="created">{{ post.date }}</div>
+	<a href="www.reddit.com{{ post.permalink }}">Post Permalink</a>
 	<div class="content">{{ post.content }}</div>
 </li>
