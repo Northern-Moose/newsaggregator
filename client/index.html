@@ -1,8 +1,9 @@
 <html>
   <head>
     <title>Pers</title>
+    <link rel="stylesheet" type="text/css" href="./style.css">
     <script type="text/javascript" src="../node_modules/angular/lib/angular.js"></script>
-    <script type="text/javascript" src="../node_modules/angular-route/angular-route.min.js"></script>
+    <script type="text/javascript" src="../node_modules/angular-route/angular-route.js"></script>
     <script type="text/javascript" src="../node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script type="text/javascript" src="./posts/posts.dir.js"></script>
     <script type="text/javascript" src="./posts/posts.controller.js"></script>
@@ -11,12 +12,10 @@
   </head>
   <body>
     <h1>Pers</h1>
-    <div>
-      Posts
+    <div class="container">
       <div ng-app="app">
-      <div ui-view></div>
-      <!-- {{posts}} -->
-        <button ng-controller="clicker">Get Posts</button>
+        <div class="posts" ui-view></div>
+        <iframe id="articleFrame" src="./iframe.html" name="iframe_a"></iframe>
       </div>
     </div>
   </body>

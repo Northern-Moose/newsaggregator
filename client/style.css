@@ -1,0 +1,40 @@
+ul {
+	list-style: none;
+}
+
+.icon {
+  width: 60px;
+  height: 60px;
+  float: left;
+  padding: 0.3%;
+}
+
+.thumbnail {
+  width: 60px;
+  height: 60px;
+  float: right;
+  padding: 0.3%;
+}
+.allPosts {
+  height: 85%;
+  width: 30%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  /*overflow-x: scroll;*/
+  font-family: 'Droid Sans', serif;
+  font-size: 12;
+  float: left;
+}
+
+#articleframe {
+  float: right;
+  width: 65%;
+  height: 85%;
+}
+
+/*.container {
+  width: 100%;
+  height: 78%;
+  margin-top: 10px;
+  /*overflow: hidden;
+}*/
