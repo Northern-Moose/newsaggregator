@@ -13,36 +13,36 @@ angular.module('posts', [
         angular.forEach(posts.data.children, function(value, key) {
           console.log("value",value.data);
             // render the directive
-          $scope.data.posts = value;
+          $scope.data.posts = value.data;
         });
       });
     };
 
   getPosts();
 })
-  .controller('clicker', function($scope, GetPosts) {
-    $scope.clicked = function() {
-      console.log('clicked');
-    };
+  // .controller('clicker', function($scope, GetPosts) {
+  //   $scope.clicked = function() {
+  //     console.log('clicked');
+  //   };
 
-    var getUnixTime = function(ts) {
-      var date = new Date(ts*1000);
-      return (date);
-    };
+  //   var getUnixTime = function(ts) {
+  //     var date = new Date(ts*1000);
+  //     return (date);
+  //   };
 
-    var getPosts = function() {
-      GetPosts.gotten().success(function(posts) {
-        angular.forEach(posts.data.children, function(value, key) {
-          console.log("value",value.data);
-          // render the directive
-          $scope.post = value.data;
-          $scope.post.date = getUnixTime(value.data.created);
-        });
-      });
-    };
+  //   var getPosts = function() {
+  //     GetPosts.gotten().success(function(posts) {
+  //       angular.forEach(posts.data.children, function(value, key) {
+  //         console.log("value",value.data);
+  //         // render the directive
+  //         $scope.post = value.data;
+  //         $scope.post.date = getUnixTime(value.data.created);
+  //       });
+  //     });
+  //   };
 
-    // getPosts();
-  });
+  //   // getPosts();
+  // });
 
   // angular.bootstrap(document, ['posts'])
 
