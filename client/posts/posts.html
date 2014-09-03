@@ -2,9 +2,7 @@
   Search: <input ng-model="query">
 </div>
 
-<ul class="allPosts">
-	<view-post post="post" ng-repeat="post in data.posts | orderBy:'createdAt' | filter:query">
-
-  <!-- {{post.subbreddit}} -->
+<ul class="allPosts" style="list-style: none;">
+	<view-post post="post" ng-repeat="post in res | orderBy:'createdAt' | filter:query">
 	</view-post>
 </ul>

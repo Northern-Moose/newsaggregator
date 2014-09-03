@@ -7,13 +7,11 @@ angular.module('posts', [
     //   .success(function(res) {
     //     console.log(res);
     //   });
-    $scope.data={};
+    $scope.res=[];
     var getPosts = function() {
       GetPosts.gotten().success(function(posts) {
         angular.forEach(posts.data.children, function(value, key) {
-          console.log("value",value.data);
-            // render the directive
-          $scope.data.posts = value.data;
+          $scope.res.push(value.data);
         });
       });
     };
@@ -24,12 +22,6 @@ angular.module('posts', [
   //   $scope.clicked = function() {
   //     console.log('clicked');
   //   };
-
-  //   var getUnixTime = function(ts) {
-  //     var date = new Date(ts*1000);
-  //     return (date);
-  //   };
-
   //   var getPosts = function() {
   //     GetPosts.gotten().success(function(posts) {
   //       angular.forEach(posts.data.children, function(value, key) {
