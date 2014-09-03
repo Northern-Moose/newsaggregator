@@ -1,7 +1,8 @@
 ### node etc ###
 
 .DS_Store
-lib/._.DS_Store
+server/._.DS_Store
+server/db/._.DS_Store
 
 # Logs
 logs
