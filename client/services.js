@@ -14,11 +14,3 @@ angular.module('services', [
 			gotten: gotten
 		};
 	});
-
-	// .config(function($stateProvider, $urlRouterProvider, $httpProvider) {
-	// 	$urlRouterProvider.otherwise('/home');
-
-
-	// });
-
-	// angular.bootstrap(document, ['services'])

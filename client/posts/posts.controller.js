@@ -18,23 +18,3 @@ angular.module('posts', [
 
   getPosts();
 })
-  // .controller('clicker', function($scope, GetPosts) {
-  //   $scope.clicked = function() {
-  //     console.log('clicked');
-  //   };
-  //   var getPosts = function() {
-  //     GetPosts.gotten().success(function(posts) {
-  //       angular.forEach(posts.data.children, function(value, key) {
-  //         console.log("value",value.data);
-  //         // render the directive
-  //         $scope.post = value.data;
-  //         $scope.post.date = getUnixTime(value.data.created);
-  //       });
-  //     });
-  //   };
-
-  //   // getPosts();
-  // });
-
-  // angular.bootstrap(document, ['posts'])
-
