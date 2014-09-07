@@ -17,22 +17,19 @@ Once the project moves into development, the press release can be used as a touc
  -->
  
 ## Heading ##
-  > Name pending..
+  > Name pending ...
 
 ## Sub-Heading ##
   > All your internet news. Here.
 
 ## Summary ##
-  > Allows the user to aggregate news from a bunch of different sites, including Facebook,
-  Reddit, news sites, and any blogs they might browse.
+  > Allows the user to aggregate news from a bunch of different sites, including Facebook, Reddit, RSS feeds, and any blogs they might browse.
 
 ## Problem ##
-  > Having to open up different sites and tabs in order to access all the newsfeeds and blogs 
-  we subscribe to. 
+  > Having to open up different sites and tabs in order to access all the newsfeeds and blogs we subscribe to.
 
 ## Solution ##
-  > Our product aggregates news sites, social media, blogs, etc. so that the user gets snippets
-  of stories in one centralized hub. 
+  > Our product aggregates news sites, social media, blogs, etc. so that the user gets snippets of stories in one centralized hub.
 
 ## Quote from You ##
   > A quote from a spokesperson in your company.

@@ -1,6 +1,6 @@
 # NewsAggregator
 
-News aggregator that integrates with Facebook and Tumblr.
+News aggregator that integrates with a variety of different content APIs.
 
 ## Team
 
@@ -46,7 +46,6 @@ bower install
 ### Roadmap
 
 View the project roadmap [here](LINK_TO_PROJECT_ISSUES)
-
 
 ## Contributing
 
