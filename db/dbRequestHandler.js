@@ -52,20 +52,20 @@ angular.module('dbApp', [])
         // Make Reddit models
         if (api === 'reddit') {
           apiPromise.then(function(apiData) {
-            apiData.forEach(post, index) {
+            apiData.forEach(function(post, index) {
               new RedditPost({
                 title: post.title,
                 url: post.data.permalink,
-                content: 'post.data.url\nupvotes: ' + post.data.ups + ' | downvotes: ' post.data.downs,
+                content: 'post.data.url\nupvotes: ' + post.data.ups + ' | downvotes: ' + post.data.downs,
                 createdAt: RedditPost.getUnixTime(post.data.created)
               });
-            };
-          };
+            });
+          });
 
         // Make NPR models
         } else if (api === 'npr') {
           apiPromise.then(function(apiData) {
-            apiData.forEach(post, index) {
+            apiData.forEach(function(post, index) {
               new NprPost({
                 title: post.title.$text,
                 url: post.link[0].$text,
@@ -74,21 +74,21 @@ angular.module('dbApp', [])
                 content: post.teaser.$text + post.text.paragraph[0].$text,
                 createdAt: post.pubDate.$text
               });
-            };
-          };
+            });
+          });
 
         // Make RSS models
         } else if (api === 'rss') {
           apiPromise.then(function(apiData) {
-            apiData.forEach(post, index) {
+            apiData.forEach(function(post, index) {
               new RssPost({
                 title: post.title,
                 url: post.link,
                 content: post.contentSnippet,
                 createdAt: post.publishedDate
               });
-            };
-          };
+            });
+          });
         }
       }
     };
@@ -103,5 +103,4 @@ angular.module('dbApp', [])
 
   // Will fetch data from aggregate content table
   .factory('fetchData', function() {
-
   });

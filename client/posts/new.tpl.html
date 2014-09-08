@@ -1,6 +1,8 @@
-<img class="icon" src="./assets/reddit.png"><h3><a href="http://www.reddit.com{{ post.permalink }}" target="iframe_a">{{ post.title }}</a></h3>
+<h3>
+  <a href="http://www.reddit.com{{ post.permalink }}">{{ post.title }}</a>
+</h3>
 <script type="text/javascript">
-	var getUnixTime = function(ts) {
+  var getUnixTime = function(ts) {
     var date = new Date(ts*1000);
     return (date);
   };
@@ -11,5 +13,5 @@
 {{ post.selftext }} {{ post.subreddit}}
 <br>
 {{ post.selftext | limitTo: 25}}
-<img class="thumbnail" src="{{ post.thumbnail }}">
+<img src="{{ post.thumbnail }}">
 <hr>

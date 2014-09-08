@@ -1,12 +1,17 @@
-angular.module('posts.directive', [])
-	.controller('PostsController', function($scope, Posts) {
-		$scope.data = {};
+angular.module('posts', [
+  'posts.directive',
+  'services'
+])
 
-		$scope.getPosts = function() {
-			Posts.get().success(function(posts) {
-				$scope.data.posts = posts;
-			});
-		};
+  .controller('PostsController', function($scope, GetPosts) {
+    $scope.res=[];
+    var getPosts = function() {
+      GetPosts.gotten().success(function(posts) {
+        angular.forEach(posts.data.children, function(value, key) {
+          $scope.res.push(value.data);
+        });
+      });
+    };
 
-		$scope.getPosts();
-	});
+  getPosts();
+});

@@ -7,9 +7,9 @@ var db = Bookshelf.initialize({
     host: '127.0.0.1',
     user: 'default',
     password: 'password',
-    database: 'hubdb',
+    database: 'main',
     charset: 'utf8',
-    filename: path.join(__dirname, './data/hubdb.sqlite')
+    filename: path.join(__dirname, './data/main.sqlite')
   }
 });
 
