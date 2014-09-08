@@ -1,6 +1,4 @@
 angular.module('app', [
-<<<<<<< HEAD
-  'services',
   'posts',
   'ngRoute',
   'ui.router'
@@ -13,7 +11,21 @@ angular.module('app', [
       templateUrl: 'posts/posts.html',
       controller: 'PostsController'
     });
-}]);
+}])
+
+
+.factory('GetPosts', function ($http) {
+  var gotten = function() {
+    return $http({
+      method: 'GET',
+      // url: 'http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=10&q=http://kiafathi.azurewebsites.net/rss/'
+      url: '/api/content'
+    });
+  };
+  return {
+    gotten: gotten
+  };
+});
 
 // .config(function($httpProvider) {
 //   // Enables cross domain calls
@@ -28,21 +40,7 @@ angular.module('app', [
 //   $httpProvider.defaults.headers.common["Accept"] = "application/json";
 //   $httpProvider.defaults.headers.common["Content-Type"] = "application/json";
 // }]);
-=======
-  'posts',
-  'ui.router'
-])
-
-  .config(['$stateProvider', function($stateProvider) {
-    $stateProvider
-      .state('home', {
-        url: '/',
-        templateUrl: 'posts/posts.html',
-        controller: 'PostsController'
-      });
-  }])
 
   .run(['$state', function($state) {
     $state.transitionTo('home');
   }]);
->>>>>>> 6132c329029662a9462ade8c27ba3aa98408282b
