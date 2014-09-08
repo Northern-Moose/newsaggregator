@@ -146,10 +146,13 @@ dbRequests.automaticApiAggregation = function() {
 };
 
 dbRequests.deliverContent = function() {
+  var deferred = Q.defer();
   db.knex.select().from('aggregatedContent')
     .then(function(rows) {
-      return rows;
+      deferred.resolve(rows);
+      // Immediately resolve promise; doesn't seem to enjoy being exported
     });
+  return deferred.promise;
 };
 
 /************************************************************

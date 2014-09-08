@@ -1,9 +1,12 @@
 var express = require('express');
 var path = require('path');
+var cors = require('cors');
+var Q = require('q');
 
 var dbRequest = require('./db/dbRequestHandler.js');
 
 var app = express();
+app.use(cors());
 
 app.use(express.static(path.join(__dirname, './client')));
 
@@ -19,8 +22,9 @@ app.post('/api/users', function(req, res) {
 
 // This handles database calls to our aggregated content table
 app.get('/api/content', function(req, res) {
-  var content = dbRequest.deliverContent();
-  res.send(200, content);
+  dbRequest.deliverContent().then(function(data) {
+  	res.status(200).send(data);
+  });
 });
 
 // This will redirect to our Angular client

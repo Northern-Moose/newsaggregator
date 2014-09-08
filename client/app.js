@@ -14,14 +14,14 @@ angular.module('app', [
 }])
 
 
-.factory('GetPosts', function ($http) {
+.factory('GetPosts', function ($http, $q) {
   var gotten = function() {
-    return $http({
-      method: 'GET',
-      // url: 'http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=10&q=http://kiafathi.azurewebsites.net/rss/'
-      url: '/api/content'
+    var deferred = $q.defer();
+    $http.get('http://127.0.0.1:8080/api/content').success(function(res) {
+      deferred.resolve(res);
     });
-  };
+    return deferred.promise;
+  }
   return {
     gotten: gotten
   };
@@ -40,7 +40,3 @@ angular.module('app', [
 //   $httpProvider.defaults.headers.common["Accept"] = "application/json";
 //   $httpProvider.defaults.headers.common["Content-Type"] = "application/json";
 // }]);
-
-  .run(['$state', function($state) {
-    $state.transitionTo('home');
-  }]);
