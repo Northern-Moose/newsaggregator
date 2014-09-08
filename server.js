@@ -14,7 +14,7 @@ setInterval(function() {
 }, 5000);
 
 // This handles requests to our users table
-app.get('/api/users', function(req, res) {
+app.post('/api/users', function(req, res) {
 });
 
 // This handles database calls to our aggregated content table
