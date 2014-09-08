@@ -14,6 +14,10 @@ var apiToUrl = {
 
 var dbRequests = {};
 
+/************************************************************
+API content requests
+************************************************************/
+
 dbRequests.fetchFromApi = function(api) {
   // Asynchronous promise that wraps GET request
   var deferred = Q.defer();
@@ -24,6 +28,11 @@ dbRequests.fetchFromApi = function(api) {
       content += chunk;
     });
     res.on('end', function() {
+    	// Parsing the data here is not necessary
+    	// for some APIs - Reddit, for example,
+    	// returns a JSON. Maybe include some sort of
+    	// check here so you don't parse every single
+    	// GET request
       deferred.resolve(JSON.parse(content));
     });
   }).on('error', function(err) {
@@ -55,6 +64,7 @@ dbRequests.createModelsForApi = function(api) {
           });
 
           redditPost.save().then(function(newPost) {
+          	// We don't even need the collections
             newPost.destroy();
             // RedditPosts.add(newPost);
           });
@@ -73,6 +83,7 @@ dbRequests.createModelsForApi = function(api) {
           });
 
           nprPost.save().then(function(newPost) {
+          	// We don't even need the collections
             newPost.destroy();
             // NprPosts.add(newPost);
           });
@@ -90,6 +101,7 @@ dbRequests.aggregateTables = function() {
   // Populates "sources" table with all available
   // API sources
   Object.keys(apiToUrl).forEach(function(api) {
+  	// Check to see if sources already exist
     db.knex('sources').where({source: api})
       .select()
       .then(function(rows) {
@@ -135,6 +147,29 @@ dbRequests.automaticApiAggregation = function() {
 
 dbRequests.deliverContent = function() {
   db.knex.select().from('aggregatedContent')
+    .then(function(rows) {
+      return rows;
+    });
+};
+
+/************************************************************
+User requests
+************************************************************/
+
+dbRequests.addUser = function(userData, source) {
+  if (source === 'facebook') {
+    db.knex('users').insert({
+      name: userData.name,
+      userSpecificId: userData.id,
+      link: userData.link
+    })
+      .then(function() {});
+  }
+};
+
+dbRequests.fetchUser = function(userSpecificId) {
+  db.knex('users').where({userSpecificId: userSpecificId})
+    .select()
     .then(function(rows) {
       return rows;
     });
