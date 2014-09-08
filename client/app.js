@@ -1,4 +1,5 @@
 angular.module('app', [
+<<<<<<< HEAD
   'services',
   'posts',
   'ngRoute',
@@ -27,3 +28,21 @@ angular.module('app', [
 //   $httpProvider.defaults.headers.common["Accept"] = "application/json";
 //   $httpProvider.defaults.headers.common["Content-Type"] = "application/json";
 // }]);
+=======
+  'posts',
+  'ui.router'
+])
+
+  .config(['$stateProvider', function($stateProvider) {
+    $stateProvider
+      .state('home', {
+        url: '/',
+        templateUrl: 'posts/posts.html',
+        controller: 'PostsController'
+      });
+  }])
+
+  .run(['$state', function($state) {
+    $state.transitionTo('home');
+  }]);
+>>>>>>> 6132c329029662a9462ade8c27ba3aa98408282b

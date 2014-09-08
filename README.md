@@ -1,12 +1,13 @@
 # NewsAggregator
 
-News aggregator that integrates with Facebook and Tumblr.
+News aggregator that integrates with a variety of different content APIs.
 
 ## Team
 
-  - __Product Owner__: teamMember
-  - __Scrum Master__: teamMember
-  - __Development Team Members__: teamMember, teamMember
+  - __Product Owner__: Sam Puth
+  - __Scrum Master__: Sean Chen
+  - __Chief Backend Developer__: Etienne Tripier
+  - __Chief Frontend Devloper__: Matt Kim
 
 ## Table of Contents
 
@@ -25,10 +26,10 @@ News aggregator that integrates with Facebook and Tumblr.
 ## Requirements
 
 - Node 0.10.x
-- Redis 2.6.x
-- Postgresql 9.1.x
-- etc
-- etc
+- Sqlite3 2.2.x
+- Angular 1.2.x
+- Passport 0.2x
+- Jasmine 2.0.x
 
 ## Development
 
@@ -45,7 +46,6 @@ bower install
 ### Roadmap
 
 View the project roadmap [here](LINK_TO_PROJECT_ISSUES)
-
 
 ## Contributing
 

@@ -1,4 +1,4 @@
-# Project Name #
+# Project Alaska #
 
 <!-- 
 > This material was originally posted [here](http://www.quora.com/What-is-Amazons-approach-to-product-development-and-product-management). It is reproduced here for posterities sake.
@@ -17,19 +17,19 @@ Once the project moves into development, the press release can be used as a touc
  -->
  
 ## Heading ##
-  > Name the product in a way the reader (i.e. your target customers) will understand.
+  > Name pending ...
 
 ## Sub-Heading ##
-  > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
+  > All your internet news. Here.
 
 ## Summary ##
-  > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
+  > Allows the user to aggregate news from a bunch of different sites, including Facebook, Reddit, RSS feeds, and any blogs they might browse.
 
 ## Problem ##
-  > Describe the problem your product solves.
+  > Having to open up different sites and tabs in order to access all the newsfeeds and blogs we subscribe to.
 
 ## Solution ##
-  > Describe how your product elegantly solves the problem.
+  > Our product aggregates news sites, social media, blogs, etc. so that the user gets snippets of stories in one centralized hub.
 
 ## Quote from You ##
   > A quote from a spokesperson in your company.
