@@ -1,6 +1,7 @@
-<li class="post">
-	<div class="title">{{ post.title }}</div>
-	<div class="created">{{ post.createdAt }}</div>
-	<a href="{{ post.url }}">Post Permalink</a>
-	<div class="content">{{ post.content }}</div>
-</li>
+<img class="icon" src="./assets/reddit.png"><h3><a href="http://www.reddit.com{{ post.permalink }}" ng-click="getHTML('http://www.reddit.com{{ post.permalink }}')">{{ post.title }}</a></h3>
+{{ post.author }}
+{{ post.selftext }} {{ post.subreddit}}
+<br>
+{{ post.selftext | limitTo: 25}}
+<!-- <img class="thumbnail" src="{{ post.thumbnail }}"> -->
+<hr>

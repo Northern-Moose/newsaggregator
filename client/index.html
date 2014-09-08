@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <title>Pers</title>
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <!-- <script type="text/javascript" src="./bower_components/oauth-js/dist/oauth.js"></script> -->
+    <script type="text/javascript" src="./lib/angular/lib/angular.js"></script>
+    <script type="text/javascript" src="./lib/angular-route/angular-route.js"></script>
+    <script type="text/javascript" src="./lib/angular-ui-router/release/angular-ui-router.min.js"></script>
+<!--     <script type="text/javascript" src="../db/data/main.sqlite"></script>
+    <script type="text/javascript" src="../db/dbRequestHandler.js"></script> -->
+    <script type="text/javascript" src="./posts/getHtml.controller.js"></script>
+    <script type="text/javascript" src="./posts/posts.dir.js"></script>
+    <script type="text/javascript" src="./posts/posts.controller.js"></script>
+    <script type="text/javascript" src="./app.js"></script>
+  </head>
+  <body>
+    <h1>Pers</h1>
+    <div class="container">
+      <div ng-app="app">
+        <div class="posts" ui-view></div>
+        <iframe id="articleFrame" src="./iframe.html" name="iframe_a">
+        <add attr ="X-Frame-Options" value="ALLOW-FROM http://www.reddit.com"/>
+        </iframe>
+      </div>
+    </div>
+  </body>
+</html>
+
