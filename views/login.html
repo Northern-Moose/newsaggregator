@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html data-ng-app="CiulApp">
+
+<!-- Make sure this matches the other ng-app names throughout our application -->
+<html data-ng-app="PersNewsAgg">
 
   <head>
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0-rc2/css/bootstrap.min.css" type="text/css" />
@@ -8,13 +10,13 @@
     <script src="script.js"></script>
   </head>
 
-  <body data-ng-controller="MainController">
+  <body data-ng-controller="LoginController">
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-lg-offset-2">
           
           <div class="page-header">
-            <h1>Welcome to PersNewsAgg! <small><a href="https://github.com/Northern-Moose/newsaggregator" target="_blank">Northern Moose</a></small> </h1>  
+            <h1>Welcome to PersNewsAgg! <small><a href="https://github.com/Northern-Moose/newsaggregator" target="_blank">Team Northern Moose</a></small> </h1>  
           </div>
           
           <div>
@@ -26,9 +28,9 @@
           <button type="button" class="btn btn-danger btn-large" data-ng-show="logged" data-ng-disabled="!facebookReady" data-ng-click="logout()">Logout</button>
           
           <!-- Comment this div out when deploying the app -->
-          <div>
+<!--      <div>
             <debug val="user"></debug>
-          </div>
+          </div> -->
           
         </div>
       </div>
