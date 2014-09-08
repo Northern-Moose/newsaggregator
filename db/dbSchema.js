@@ -69,22 +69,6 @@ db.knex.schema.hasTable('nprContent').then(function(exists) {
   }
 });
 
-// RSS
-db.knex.schema.hasTable('rssContent').then(function(exists) {
-  if (!exists) {
-    db.knex.schema.createTable('rssContent', function(content) {
-      content.increments('rssContentKey').primary();
-      content.string('title', 255);
-      content.string('url', 255);
-      content.string('content', 1000);
-      // Standardize as date
-      content.string('createdAt', 255);
-    }).then(function(table) {
-      console.log('Created rssContent', table);
-    });
-  }
-});
-
 /************************************************************/
 // Utility and joining tables
 /************************************************************/
@@ -109,7 +93,6 @@ db.knex.schema.hasTable('sources').then(function(exists) {
     db.knex.schema.createTable('sources', function(source) {
       source.increments('sourceKey').primary();
       source.string('source', 100).unique();
-      source.timestamps();
     }).then(function(table) {
       console.log('Created sources', table);
     });

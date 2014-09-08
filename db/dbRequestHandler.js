@@ -1,106 +1,143 @@
-/*
-Quick tip: How to add an API
-1. Add API's URL to apiToUrl object
-2. Add model creation to makeModels factory
-3. Create model
-4. Create collection
-5. Modify saveData factory
-6. Modify fetchData factory
-*/
+var Q = require('q');
+var http = require('http');
+var db = require('./dbSchema.js');
+// var RedditPosts = require('./collections/redditCollection.js');
+var RedditPost = require('./models/redditModel.js');
+// var NprPosts = require('./collections/nprCollection.js');
+var NprPost = require('./models/nprModel.js');
+
 var apiToUrl = {
   // Update with each API's URL
-  reddit: '',
-  npr: '',
-  rss: ''
+  reddit: 'http://www.reddit.com/.json',
+  npr: ''
 };
 
-angular.module('dbApp', [])
-  // Generic GET request to API-specific URL
-  .factory('getApi', function($q, $http, $log) {
-    var output = {};
+var dbRequests = {};
 
-    output.fetchFromApi = function(api) {
-      // Asynchronous promise that wraps GET request
-      var deferred = $q.defer();
+dbRequests.fetchFromApi = function(api) {
+  // Asynchronous promise that wraps GET request
+  var deferred = Q.defer();
+  var content = '';
 
-      // $http.get is a promise, but deferral is needed
-      // to promisify request within makeModels factory
-      $http.get(apiToUrl[api])
-          .success(function(data) {
-              deferred.resolve(data);
-          }).error(function(msg, code) {
-              deferred.reject(msg);
-              // console.log error
-              $log.error(msg, code);
-          });
-
-      return deferred.promise;
-    };
-
-    return output;
-  })
-
-  // Creates API-specific models for SQLite/Bookshelf use
-  .factory('makeModels', function(getApi) {
-    var output = {};
-
-    output.createAll = function(api) {
-      if (apiToUrl[api]) {
-        // Create promise to return data from API
-        var apiPromise = getApi.fetchFromApi(api);
-
-        // Make Reddit models
-        if (api === 'reddit') {
-          apiPromise.then(function(apiData) {
-            apiData.forEach(function(post, index) {
-              new RedditPost({
-                title: post.title,
-                url: post.data.permalink,
-                content: 'post.data.url\nupvotes: ' + post.data.ups + ' | downvotes: ' + post.data.downs,
-                createdAt: RedditPost.getUnixTime(post.data.created)
-              });
-            });
-          });
-
-        // Make NPR models
-        } else if (api === 'npr') {
-          apiPromise.then(function(apiData) {
-            apiData.forEach(function(post, index) {
-              new NprPost({
-                title: post.title.$text,
-                url: post.link[0].$text,
-                thumbnailUrl: post.thumbnail.large.$text,
-                author: post.byline[0].name.$text,
-                content: post.teaser.$text + post.text.paragraph[0].$text,
-                createdAt: post.pubDate.$text
-              });
-            });
-          });
-
-        // Make RSS models
-        } else if (api === 'rss') {
-          apiPromise.then(function(apiData) {
-            apiData.forEach(function(post, index) {
-              new RssPost({
-                title: post.title,
-                url: post.link,
-                content: post.contentSnippet,
-                createdAt: post.publishedDate
-              });
-            });
-          });
-        }
-      }
-    };
-
-    return output;
-  })
-
-  // Saves data to individual API content tables,
-  // then saves all data to aggregate table using UNION
-  .factory('saveData', function() {
-  })
-
-  // Will fetch data from aggregate content table
-  .factory('fetchData', function() {
+  http.get(apiToUrl[api], function(res) {
+    res.on('data', function(chunk) {
+      content += chunk;
+    });
+    res.on('end', function() {
+      deferred.resolve(JSON.parse(content));
+    });
+  }).on('error', function(err) {
+    deferred.reject(err.message);
   });
+
+  return deferred.promise;
+};
+
+dbRequests.createModelsForApi = function(api) {
+  if (apiToUrl[api]) {
+    // "this" is used because this method is being called
+    // from server.js. Consider using Q.nbind if you want
+    // to move stuff around while preserving the correct
+    // context for the method call
+    this.fetchFromApi(api).then(function(apiData) {
+      // First truncate API-specific content table
+      db.knex(api + 'Content').truncate()
+        .then(function() {});
+
+      // Make Reddit models
+      if (api === 'reddit') {
+        apiData.data.children.forEach(function(post, index) {
+          var redditPost = new RedditPost({
+            title: post.data.title,
+            url: post.data.permalink,
+            content: 'post.data.url\nupvotes: ' + post.data.ups + ' | downvotes: ' + post.data.downs,
+            createdAt: RedditPost.getUnixTime(post.data.created)
+          });
+
+          redditPost.save().then(function(newPost) {
+            newPost.destroy();
+            // RedditPosts.add(newPost);
+          });
+        });
+
+      // Make NPR models
+      } else if (api === 'npr') {
+        apiData.forEach(function(post, index) {
+          var nprPost = new NprPost({
+            title: post.title.$text,
+            url: post.link[0].$text,
+            thumbnailUrl: post.thumbnail.large.$text,
+            author: post.byline[0].name.$text,
+            content: post.teaser.$text + post.text.paragraph[0].$text,
+            createdAt: post.pubDate.$text
+          });
+
+          nprPost.save().then(function(newPost) {
+            newPost.destroy();
+            // NprPosts.add(newPost);
+          });
+        });
+      }
+    });
+  }
+};
+
+dbRequests.allApisAtOnce = function() {
+  this.createModelsForApi('reddit');
+};
+
+dbRequests.aggregateTables = function() {
+  // Populates "sources" table with all available
+  // API sources
+  Object.keys(apiToUrl).forEach(function(api) {
+    db.knex('sources').where({source: api})
+      .select()
+      .then(function(rows) {
+        if (!rows.length) {
+          db.knex('sources').insert({source: api})
+            // For some reason, Knex needs this extra "then"
+            // statement to actually perform the insert
+            .then(function() {});
+        }
+      });
+  });
+
+  db.knex('aggregatedContent').truncate()
+    .then(function() {
+      // Insert Reddit content
+      db.knex.raw('SELECT b.sourceKey, a.* FROM redditContent a INNER JOIN sources b ON "reddit" = b.source')
+        .then(function(rows) {
+          rows.forEach(function(row) {
+            db.knex('aggregatedContent').insert({
+              sourceKey: row.sourceKey,
+              title: row.title,
+              url: row.url,
+              content: row.content,
+              createdAt: row.createdAt
+            })
+              .then(function() {});
+          });
+        });
+    });
+};
+
+dbRequests.automaticApiAggregation = function() {
+  // Once all models have been created, then we aggregate
+  // into our main aggregatedContent table
+  // The use of promises here provides a layer of
+  // flexibility when dealing with additional GET
+  // requests not built into "createModelsForApi"
+  var doAllApis = Q.nbind(this.allApisAtOnce, this);
+  var aggregate = this.aggregateTables.bind(this);
+
+  doAllApis().done(aggregate());
+};
+
+dbRequests.deliverContent = function() {
+  db.knex.select().from('aggregatedContent')
+    .then(function(rows) {
+      return rows;
+    });
+};
+
+module.exports = dbRequests;
