@@ -28,7 +28,6 @@ News aggregator that integrates with a variety of different content APIs.
 - Node 0.10.x
 - Sqlite3 2.2.x
 - Angular 1.2.x
-- Passport 0.2x
 - Jasmine 2.0.x
 
 ## Development
@@ -45,7 +44,7 @@ bower install
 
 ### Roadmap
 
-View the project roadmap [here](LINK_TO_PROJECT_ISSUES)
+View the project roadmap [here](https://github.com/Northern-Moose/newsaggregator/issues)
 
 ## Contributing
 
