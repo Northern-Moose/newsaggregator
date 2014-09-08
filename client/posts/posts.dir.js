@@ -1,4 +1,6 @@
-angular.module('posts.directive', [])
+angular.module('posts.directive', [
+	'getHTML'
+	])
 	.directive('viewPost', function() {
 		var getUnixTime = function(ts) {
       var date = new Date(ts*1000);

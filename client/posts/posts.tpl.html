@@ -1,12 +1,4 @@
-<img class="icon" src="./assets/reddit.png"><h3><a href="http://www.reddit.com{{ post.permalink }}" target="iframe_a">{{ post.title }}</a></h3>
-<script type="text/javascript">
-	var getUnixTime = function(ts) {
-    var date = new Date(ts*1000);
-    return (date);
-  };
-  var time = getUnixTime({{ post.created }})
-  console.log(time)
-</script>
+<img class="icon" src="./assets/reddit.png"><h3><a href="http://www.reddit.com{{ post.permalink }}" ng-click="getHTML('http://www.reddit.com{{ post.permalink }}')">{{ post.title }}</a></h3>
 {{ post.author }}
 {{ post.selftext }} {{ post.subreddit}}
 <br>

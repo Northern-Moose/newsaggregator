@@ -1,12 +1,15 @@
 angular.module('posts', [
-  'posts.directive'
+  'posts.directive',
+  'getHTML'
   ])
 
   .controller('PostsController', function($scope, GetPosts) {
-    $scope.res=[];
+    $scope.post=[];
     var getPosts = function() {
       GetPosts.gotten().then(function(res) {
-        console.log("res", res);
+        angular.forEach(res, function(value, key) {
+          $scope.post.push(value);
+        })
       })
 
       // success(function(posts) {

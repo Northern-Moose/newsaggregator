@@ -2,7 +2,7 @@
   Search:<input ng-model="query">
 </div>
 
-<ul class="allPosts" style="list-style: none;">
-	<view-post post="post" ng-repeat="post in res | orderBy:'createdAt' | filter:query">
+<ul class="allPosts" style="list-style: none;" ng-controller="getHTMLController">
+	<view-post post="post" ng-repeat="post in post | orderBy:'createdAt' | filter:query">
 	</view-post>
 </ul>
