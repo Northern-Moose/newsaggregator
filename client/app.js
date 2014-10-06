@@ -16,6 +16,7 @@ angular.module('app', [
 
 .factory('GetPosts', function ($http, $q) {
   var gotten = function() {
+    console.log("called gotten")
     var deferred = $q.defer();
     $http.get('http://127.0.0.1:8080/api/content').success(function(res) {
       deferred.resolve(res);
@@ -25,18 +26,8 @@ angular.module('app', [
   return {
     gotten: gotten
   };
-});
+})
 
-// .config(function($httpProvider) {
-//   // Enables cross domain calls
-//   $httpProvider.defaults.useXDomain = true;
-//   // Removes the header used to identify ajax calls that would prevent CORS from working
-//   delete $httpProvider.defaults.headers.common['X-Requested-With'];
-// });
-// // .config(['$httpProvider', function($httpProvider) {
-//   $httpProvider.defaults.useXDomain = true;
-//   $httpProvider.defaults.withCredentials = true;
-//   delete $httpProvider.defaults.headers.common["X-Requested-With"];
-//   $httpProvider.defaults.headers.common["Accept"] = "application/json";
-//   $httpProvider.defaults.headers.common["Content-Type"] = "application/json";
-// }]);
+.run(['$state', function($state) {
+  $state.transitionTo('home');
+}]);

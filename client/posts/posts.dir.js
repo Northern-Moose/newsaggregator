@@ -1,5 +1,5 @@
 angular.module('posts.directive', [
-	'getHTML'
+	// 'getHTML'
 	])
 	.directive('viewPost', function() {
 		var getUnixTime = function(ts) {

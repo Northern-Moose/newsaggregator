@@ -1,6 +1,6 @@
-<img class="icon" src="./assets/reddit.png"><h3><a href="http://www.reddit.com{{ post.permalink }}" ng-click="getHTML('http://www.reddit.com{{ post.permalink }}')">{{ post.title }}</a></h3>
+<img class="icon" src="./assets/reddit.png"><h3><a href="http://www.reddit.com{{ post.url }}" ng-click="console.log('chocolate')">{{ post.title }}</a></h3>
 {{ post.author }}
-{{ post.selftext }} {{ post.subreddit}}
+{{ post.content }}
 <br>
 {{ post.selftext | limitTo: 25}}
 <!-- <img class="thumbnail" src="{{ post.thumbnail }}"> -->
